@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int controls(int argc, char **argv)
+void controls(int argc, char **argv)
 {
 	if (argc < 2)
 		exit(ft_printf("you entered few arguments"));
@@ -20,7 +20,7 @@ int controls(int argc, char **argv)
 		exit(ft_printf("the extension of this file is not '.ber'!"));
 	if (!map_items(argv[1]))
 		exit(ft_printf("The map has a different argument!"));
-	if (!map_axis(argv[1]))
+	map_axis(argv[1]);
 	ft_printf("basarili");
 }
 
@@ -28,7 +28,7 @@ int	correct_ber(char *file)
 {
 	int	i;
 
-	i = ft_strlen(file) - 1;
+	i = ft_so_strlen(file) - 1;
 	if (file[i--] == 'r')
 		if (file[i--] == 'e')
 			if (file[i--] == 'b')
@@ -60,7 +60,7 @@ int	map_items(char *name)
 	}
 	close(fd);
 	fd = open(name, O_RDONLY);
-	if(item_count(fd, 0, 0, 0));
+	item_count(fd, 0, 0, 0);
 	return (1);
 }
 

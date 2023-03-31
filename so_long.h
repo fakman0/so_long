@@ -19,12 +19,12 @@
 # include "libs/minilibx_opengl_20191021/mlx.h"
 
 //controls
-int controls(int argc, char **argv);
+void controls(int argc, char **argv);
 int	correct_ber(char *file);
 int	map_items(char *name);
 int item_count(int fd, int p, int e, int c);
-int map_y(int fd);
-int map_x(int fd);
-int map_axis(char *name);
+size_t map_y(int fd);
+size_t map_x(int fd);
+void map_axis(char *name);
 
 #endif

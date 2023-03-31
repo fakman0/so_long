@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-int map_y(int fd)
+size_t map_y(int fd)
 {
     int y;
     char *str;
@@ -32,40 +32,40 @@ int map_y(int fd)
     return (y);
 }
 
-int map_x(int fd)
+size_t map_x(int fd)
 {
-    int x;
+    size_t x;
     char *str;
-
+    if (fd <= 0)
+		exit(ft_printf("An incorrect file was entered."));
     str = get_next_line(fd);
-    x = ft_strlen(str) - 1;
+    x = ft_so_strlen(str);
     while (str != NULL)
     {
-        if (x != (ft_strlen(str) - 1))
+        if (x != ft_so_strlen(str))
             exit(ft_printf("the x-axis is not equal."));
         str = get_next_line(fd);
     }
-    close(fd);
     if (x < 3)
         exit(ft_printf("x-axis is less than 3"));
     return (x);
 }
 
-int map_axis(char *name)
+void map_axis(char *name)
 {
-    int x;
-    int y;
+    size_t x;
+    size_t y;
     int fd;
-
     fd = open(name, O_RDONLY);
     x = map_x(fd);
+    close(fd);
     fd = open(name, O_RDONLY);
     y = map_y(fd);
-    if (y == 3 || y == 4)
+    close(fd);
+    if (y == 3)
         if(x < 5)
             exit(ft_printf("the map is too small."));
-    if (x == 3 || x == 4)
+    if (x == 3)
         if (y < 5)
             exit(ft_printf("the map is too small."));
-    return (1);
 }

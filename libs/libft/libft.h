@@ -1,14 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 16:33:12 by yciftci           #+#    #+#             */
-/*   Updated: 2023/01/09 15:13:32 by yciftci          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/* ************************************************************************************** */
+/*                                                                                        */
+/*                                                                   :::      ::::::::    */
+/*   libft.h                                                       :+:      :+:    :+:    */
+/*                                                               +:+ +:+         +:+      */
+/*   By: fakman <fakman@student.42kocaeli.com.tr>              +#+  +:+       +#+         */
+/*                                                           +#+#+#+#+#+   +#+            */
+/*   Created: 0003/01/09 15:13:32 by ftci                         #+#    #+#              */
+/*   Updated: 2023/03/31 16:40:49 by fakman                      ###   ########.tr        */
+/*                                                                                        */
+/* ************************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -80,6 +80,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+size_t	ft_so_strlen(const char *s);
 //printf
 int		ft_putchr(char c);
 int		ft_putnbr(int nbr);
