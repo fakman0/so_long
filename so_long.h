@@ -21,5 +21,6 @@
 //controls
 int	correct_ber(char *file);
 int	map_items(char *name);
+int item_count(int fd);
 
 #endif

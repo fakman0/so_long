@@ -19,6 +19,6 @@ int	main(int argc, char **argv)
 	if (!correct_ber(argv[1]))
 		exit(ft_printf("the extension of this file is not '.ber'!"));
 	if (!map_items(argv[1]))
-		exit(ft_printf("map have another arguman"));
-	
+		exit(ft_printf("The map has a different argument!"));
+	ft_printf("basarili");
 }

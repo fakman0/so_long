@@ -32,20 +32,56 @@ int	map_items(char *name)
 	int		i;
 
 	fd = open(name, O_RDONLY);
-	i = 0;
+	if (fd <= 0)
+		exit(ft_printf("An incorrect file was entered."));
 	str = get_next_line(fd);
 	while (str != NULL)
 	{
+		i = 0;
 		while(str[i])
 		{
-			if(str[i] == 'p' || str[i] == 'e' || str[i] == 'c' || str[i] == '1' || str[i] == '0' || str[i] == '\n' )
-			{
-				i++;
-				continue;
-			}
-			return (0);
+			if(str[i] != 'p' && str[i] != 'e' && str[i] != 'c' && str[i] != '1' && str[i] != '0' && str[i] != '\n')
+				return (0);
+			i++;
 		}
 		str = get_next_line(fd);
 	}
+	close(fd);
+	fd = open(name, O_RDONLY);
+	if(item_count(fd));
 	return (1);
+}
+
+int item_count(int fd)
+{
+	char	*str;
+	int		i;
+	int		p;
+	int		e;
+	int		c;
+
+	p = 0;
+	e = 0;
+	c = 0;
+	if (fd <= 0)
+		exit(ft_printf("an incorrect file was entered!"));
+	str = get_next_line(fd);
+	while (str != NULL)
+	{
+		i = 0;
+		while(str[i])
+		{
+			if(str[i] == 'p')
+				p++;
+			if(str[i] == 'e')
+				e++;
+			if(str[i] == 'c')
+				c++;
+			i++;
+		}
+		str = get_next_line(fd);
+	}
+	if (p == 1 && e == 1 && c >= 1)
+		return (1);
+	exit(ft_printf("the number of parameters is wrong!"));
 }
