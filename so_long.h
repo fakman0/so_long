@@ -26,5 +26,6 @@ int item_count(int fd, int p, int e, int c);
 size_t map_y(int fd);
 size_t map_x(int fd);
 void map_axis(char *name);
+void wall_control(int fd, int x, int y);
 
 #endif

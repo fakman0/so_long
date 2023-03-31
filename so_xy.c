@@ -68,4 +68,6 @@ void map_axis(char *name)
     if (x == 3)
         if (y < 5)
             exit(ft_printf("the map is too small."));
+    fd = open(name, O_RDONLY);
+    wall_control(fd, x, y);
 }
