@@ -20,5 +20,6 @@
 
 //controls
 int	correct_ber(char *file);
+int	map_items(char *name);
 
 #endif

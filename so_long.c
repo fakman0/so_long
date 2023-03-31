@@ -14,10 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-
 	if (argc < 2)
 		exit(ft_printf("you entered few arguments"));
 	if (!correct_ber(argv[1]))
 		exit(ft_printf("the extension of this file is not '.ber'!"));
+	if (!map_items(argv[1]))
+		exit(ft_printf("map have another arguman"));
 	
 }

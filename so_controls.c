@@ -25,14 +25,27 @@ int	correct_ber(char *file)
 	return (0);
 }
 
-int	map_items(char *str)
+int	map_items(char *name)
 {
 	int		fd;
 	char	*str;
-	int i;
+	int		i;
 
+	fd = open(name, O_RDONLY);
 	i = 0;
-	fd = open("maps/test_map1", O_RDONLY);
 	str = get_next_line(fd);
-	while(str[i] ==)
+	while (str != NULL)
+	{
+		while(str[i])
+		{
+			if(str[i] == 'p' || str[i] == 'e' || str[i] == 'c' || str[i] == '1' || str[i] == '0' || str[i] == '\n' )
+			{
+				i++;
+				continue;
+			}
+			return (0);
+		}
+		str = get_next_line(fd);
+	}
+	return (1);
 }
