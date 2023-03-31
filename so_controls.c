@@ -1,16 +1,28 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_controls.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 14:57:35 by fakman            #+#    #+#             */
-/*   Updated: 2023/03/23 15:52:10 by fakman           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/* ************************************************************************************** */
+/*                                                                                        */
+/*                                                                   :::      ::::::::    */
+/*   so_controls.c                                                 :+:      :+:    :+:    */
+/*                                                               +:+ +:+         +:+      */
+/*   By: fakman <fakman@student.42kocaeli.com.tr>              +#+  +:+       +#+         */
+/*                                                           +#+#+#+#+#+   +#+            */
+/*   Created: 0003/03/23 15:52:10 by man                          #+#    #+#              */
+/*   Updated: 2023/03/31 15:26:07 by fakman                      ###   ########.tr        */
+/*                                                                                        */
+/* ************************************************************************************** */
 
 #include "so_long.h"
+
+int controls(int argc, char **argv)
+{
+	if (argc < 2)
+		exit(ft_printf("you entered few arguments"));
+	if (!correct_ber(argv[1]))
+		exit(ft_printf("the extension of this file is not '.ber'!"));
+	if (!map_items(argv[1]))
+		exit(ft_printf("The map has a different argument!"));
+	if (!map_axis(argv[1]))
+	ft_printf("basarili");
+}
 
 int	correct_ber(char *file)
 {
@@ -48,23 +60,15 @@ int	map_items(char *name)
 	}
 	close(fd);
 	fd = open(name, O_RDONLY);
-	if(item_count(fd));
+	if(item_count(fd, 0, 0, 0));
 	return (1);
 }
 
-int item_count(int fd)
+int item_count(int fd, int p, int e, int c)
 {
 	char	*str;
 	int		i;
-	int		p;
-	int		e;
-	int		c;
 
-	p = 0;
-	e = 0;
-	c = 0;
-	if (fd <= 0)
-		exit(ft_printf("an incorrect file was entered!"));
 	str = get_next_line(fd);
 	while (str != NULL)
 	{
@@ -81,6 +85,7 @@ int item_count(int fd)
 		}
 		str = get_next_line(fd);
 	}
+	close(fd);
 	if (p == 1 && e == 1 && c >= 1)
 		return (1);
 	exit(ft_printf("the number of parameters is wrong!"));
