@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:19:30 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/01 17:50:24 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/01 18:01:20 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	map_items(char *name)
 		i = 0;
 		while (str[i])
 		{
-			if (str[i] != 'p' && str[i] != 'e' && str[i] != 'c' && str[i] != '1'
+			if (str[i] != 'P' && str[i] != 'E' && str[i] != 'C' && str[i] != '1'
 				&& str[i] != '0' && str[i] != '\n')
 				return (0);
 			i++;
@@ -77,11 +77,11 @@ int	item_count(int fd, int p, int e, int c)
 		i = 0;
 		while (str[i])
 		{
-			if (str[i] == 'p')
+			if (str[i] == 'P')
 				p++;
-			if (str[i] == 'e')
+			if (str[i] == 'E')
 				e++;
-			if (str[i] == 'c')
+			if (str[i] == 'C')
 				c++;
 			i++;
 		}

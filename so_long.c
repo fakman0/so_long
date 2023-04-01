@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:41:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/01 17:55:04 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/01 18:02:48 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	*p_axis(char **map, int y, int x)
 	while (map[y])
 	{
 		x = 0;
-		while (map[y][x] && map[y][x] != 'p')
+		while (map[y][x] && map[y][x] != 'P')
 			x++;
-		if (map[y][x] == 'p')
+		if (map[y][x] == 'P')
 			break ;
 		else
 			y++;
@@ -45,7 +45,7 @@ int	param_count(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == 'e' || map[i][j] == 'c')
+			if (map[i][j] == 'E' || map[i][j] == 'C')
 				counter++;
 			j++;
 		}
@@ -57,13 +57,13 @@ int	param_count(char **map)
 int	recursive(char **map, int y, int x)
 {
 	map[y][x] = '1';
-	if (map[y - 1][x] == '0' || map[y - 1][x] == 'c' || map[y - 1][x] == 'e')
+	if (map[y - 1][x] == '0' || map[y - 1][x] == 'C' || map[y - 1][x] == 'E')
 		recursive(map, y - 1, x);
-	if (map[y][x + 1] == '0' || map[y][x + 1] == 'c' || map[y][x + 1] == 'e')
+	if (map[y][x + 1] == '0' || map[y][x + 1] == 'C' || map[y][x + 1] == 'E')
 		recursive(map, y, x + 1);
-	if (map[y + 1][x] == '0' || map[y + 1][x] == 'c' || map[y + 1][x] == 'e')
+	if (map[y + 1][x] == '0' || map[y + 1][x] == 'C' || map[y + 1][x] == 'E')
 		recursive(map, y + 1, x);
-	if (map[y][x - 1] == '0' || map[y][x - 1] == 'c' || map[y][x - 1] == 'e')
+	if (map[y][x - 1] == '0' || map[y][x - 1] == 'C' || map[y][x - 1] == 'E')
 		recursive(map, y, x - 1);
 	if (param_count(map) == 0)
 		return (1);
