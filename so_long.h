@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:18:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/01 17:52:02 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/02 00:37:47 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,21 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libs/libft/libft.h"
-# include "libs/minilibx_opengl_20191021/mlx.h"
+# include "libs/minilibx/mlx.h"
 
+//struct
+typedef struct s_data
+{
+	char	**map;
+	void	*m_p;
+	void	*w_p;
+	int		*px_p;
+	void	*p_p;
+	void	*b_p;
+	void	*wall_p;
+	void	*c_p;
+	void	*e_p;
+}				t_data;
 //controls
 void	controls(int argc, char **argv);
 int		correct_ber(char *file);
@@ -30,5 +43,11 @@ void	wall_control(int fd, int x, int y);
 char	**read_map(char *name);
 int		recursive(char **map, int y, int x);
 int		*p_axis(char **map, int i, int j);
+int		param_count(char **map);
+//mlx
+void	get_variables(char *name, t_data *var);
+void	open_window(int fd);
+void	put_image(t_data *d, int i, int j);
+
 
 #endif

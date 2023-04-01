@@ -6,11 +6,13 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:41:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/01 18:02:48 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/02 00:52:43 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+
 
 int	*p_axis(char **map, int y, int x)
 {
@@ -73,12 +75,16 @@ int	recursive(char **map, int y, int x)
 
 int	main(int argc, char **argv)
 {
-	int		fd;
 	char	**map;
+	t_data	*data;
 
-	controls(argc, argv);
+	data = malloc(sizeof(t_data) * 1);
 	map = read_map(argv[1]);
+	controls(argc, argv);
 	if (!recursive(map, p_axis(map, 0, 0)[0], p_axis(map, 0, 0)[1]))
 		exit(ft_printf("map is impossible."));
-	return(0);
+	get_variables(argv[1], data);
+	put_image(data, 0, 0);
+	mlx_loop(data->m_p);
+	return (0);
 }
