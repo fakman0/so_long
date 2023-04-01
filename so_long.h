@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:18:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/01 15:16:25 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/01 17:52:02 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ size_t	map_x(int fd);
 void	map_axis(char *name);
 void	wall_control(int fd, int x, int y);
 char	**read_map(char *name);
+int		recursive(char **map, int y, int x);
+int		*p_axis(char **map, int i, int j);
 
 #endif
