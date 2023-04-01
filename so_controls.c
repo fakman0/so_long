@@ -1,18 +1,18 @@
-/* ************************************************************************************** */
-/*                                                                                        */
-/*                                                                   :::      ::::::::    */
-/*   so_controls.c                                                 :+:      :+:    :+:    */
-/*                                                               +:+ +:+         +:+      */
-/*   By: fakman <fakman@student.42kocaeli.com.tr>              +#+  +:+       +#+         */
-/*                                                           +#+#+#+#+#+   +#+            */
-/*   Created: 0003/03/23 15:52:10 by man                          #+#    #+#              */
-/*   Updated: 2023/03/31 15:26:07 by fakman                      ###   ########.tr        */
-/*                                                                                        */
-/* ************************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_controls.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/01 14:19:30 by fakman            #+#    #+#             */
+/*   Updated: 2023/04/01 14:25:43 by fakman           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "so_long.h"
 
-void controls(int argc, char **argv)
+void	controls(int argc, char **argv)
 {
 	if (argc < 2)
 		exit(ft_printf("you entered few arguments"));
@@ -50,12 +50,14 @@ int	map_items(char *name)
 	while (str != NULL)
 	{
 		i = 0;
-		while(str[i])
+		while (str[i])
 		{
-			if(str[i] != 'p' && str[i] != 'e' && str[i] != 'c' && str[i] != '1' && str[i] != '0' && str[i] != '\n')
+			if (str[i] != 'p' && str[i] != 'e' && str[i] != 'c' && str[i] != '1'
+				&& str[i] != '0' && str[i] != '\n')
 				return (0);
 			i++;
 		}
+		free(str);
 		str = get_next_line(fd);
 	}
 	close(fd);
@@ -64,7 +66,7 @@ int	map_items(char *name)
 	return (1);
 }
 
-int item_count(int fd, int p, int e, int c)
+int	item_count(int fd, int p, int e, int c)
 {
 	char	*str;
 	int		i;
@@ -73,18 +75,20 @@ int item_count(int fd, int p, int e, int c)
 	while (str != NULL)
 	{
 		i = 0;
-		while(str[i])
+		while (str[i])
 		{
-			if(str[i] == 'p')
+			if (str[i] == 'p')
 				p++;
-			if(str[i] == 'e')
+			if (str[i] == 'e')
 				e++;
-			if(str[i] == 'c')
+			if (str[i] == 'c')
 				c++;
 			i++;
 		}
+		free(str);
 		str = get_next_line(fd);
 	}
+	free(str);
 	close(fd);
 	if (p == 1 && e == 1 && c >= 1)
 		return (1);
