@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:41:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/02 00:52:43 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/02 14:12:24 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,26 @@ int	*p_axis(char **map, int y, int x)
 		while (map[y][x] && map[y][x] != 'P')
 			x++;
 		if (map[y][x] == 'P')
+			break ;
+		else
+			y++;
+	}
+	ret[0] = y;
+	ret[1] = x;
+	return (ret);
+}
+
+int	*e_axis(char **map, int y, int x)
+{
+	int	*ret;
+
+	ret = malloc(sizeof(int) * 2);
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x] && map[y][x] != 'E')
+			x++;
+		if (map[y][x] == 'E')
 			break ;
 		else
 			y++;
@@ -85,6 +105,7 @@ int	main(int argc, char **argv)
 		exit(ft_printf("map is impossible."));
 	get_variables(argv[1], data);
 	put_image(data, 0, 0);
+	mlx_key_hook(data->w_p, keycode, data);
 	mlx_loop(data->m_p);
 	return (0);
 }

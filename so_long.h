@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:18:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/02 00:37:47 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/02 14:17:44 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ typedef struct s_data
 	void	*m_p;
 	void	*w_p;
 	int		*px_p;
+	int		*ex_p;
 	void	*p_p;
 	void	*b_p;
 	void	*wall_p;
 	void	*c_p;
 	void	*e_p;
+	int		step;
+	int		c_count;
 }				t_data;
 //controls
 void	controls(int argc, char **argv);
@@ -43,11 +46,14 @@ void	wall_control(int fd, int x, int y);
 char	**read_map(char *name);
 int		recursive(char **map, int y, int x);
 int		*p_axis(char **map, int i, int j);
+int		*e_axis(char **map, int y, int x);
 int		param_count(char **map);
 //mlx
 void	get_variables(char *name, t_data *var);
 void	open_window(int fd);
 void	put_image(t_data *d, int i, int j);
+int		keycode(int keycode, t_data *data);
+void	move(t_data *d,int y,int x);
 
 
 #endif
