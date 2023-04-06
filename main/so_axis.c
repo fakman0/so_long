@@ -6,11 +6,51 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:18:36 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/06 20:39:25 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 20:51:39 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	*p_axis(char **map, int y, int x)
+{
+	int	*ret;
+
+	ret = malloc(sizeof(int) * 2);
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x] && map[y][x] != 'P')
+			x++;
+		if (map[y][x] == 'P')
+			break ;
+		else
+			y++;
+	}
+	ret[0] = y;
+	ret[1] = x;
+	return (ret);
+}
+
+int	*e_axis(char **map, int y, int x)
+{
+	int	*ret;
+
+	ret = malloc(sizeof(int) * 2);
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x] && map[y][x] != 'E')
+			x++;
+		if (map[y][x] == 'E')
+			break ;
+		else
+			y++;
+	}
+	ret[0] = y;
+	ret[1] = x;
+	return (ret);
+}
 
 size_t	map_y(int fd)
 {

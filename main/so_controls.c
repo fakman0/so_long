@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:19:30 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/06 18:52:32 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 21:03:14 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,28 @@ void	controls(int argc, char **argv)
 	if (!map_items(argv[1]))
 		exit(ft_printf("The map has a different argument!"));
 	map_axis(argv[1]);
+}
+
+char	**read_map(char *name)
+{
+	int			fd;
+	size_t		i;
+	size_t		y;
+	char		**str;
+
+	fd = open(name, O_RDONLY);
+	i = 0;
+	y = map_y(fd);
+	close(fd);
+	fd = open(name, O_RDONLY);
+	str = malloc(sizeof(char *) * (y + 1));
+	str[i] = get_next_line(fd);
+	while (str[i] != NULL)
+	{
+		i++;
+		str[i] = get_next_line(fd);
+	}
+	return (str);
 }
 
 int	correct_ber(char *file)
