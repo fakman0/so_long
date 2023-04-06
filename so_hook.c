@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 13:26:44 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/06 18:43:07 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 19:07:56 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,9 @@ void	up_map(t_data *d, char dir)
 int	move(t_data *d, int y, int x, char dir)
 {
 	int	mv;
+	int	*ext;
 
+	ext = e_axis(d->map, 0, 0);
 	mv = 1;
 	if (dir == 'W' && (d->map[y - 1][x] != 'E' || open_exit(d)))
 		--d->px_p[0];
@@ -103,11 +105,11 @@ int	move(t_data *d, int y, int x, char dir)
 		mv = 0;
 	if (mv == 0)
 		return (0);
-	// if (d->map[y][x] == 'C')
-	// 	d->c_count++;
 	up_map(d, dir);
 	put_image(d, 0, 0);
 	d->step++;
+	if (ext[0] == p_axis(d->map, 0, 0)[0] && ext[1] == p_axis(d->map, 0, 0)[1])
+		exit(ft_printf("You finished the game."));
 	ft_printf("Move count: %d\n", d->step);
 	return (0);
 }

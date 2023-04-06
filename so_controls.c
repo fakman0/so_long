@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:19:30 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/01 18:01:20 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 18:52:32 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	controls(int argc, char **argv)
 	if (!map_items(argv[1]))
 		exit(ft_printf("The map has a different argument!"));
 	map_axis(argv[1]);
-	ft_printf("basarili");
 }
 
 int	correct_ber(char *file)
