@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:19:30 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/06 21:03:14 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 21:36:21 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	controls(int argc, char **argv)
 {
 	if (argc < 2)
-		exit(ft_printf("you entered few arguments"));
+		exit(ft_printf("Error\nyou entered few arguments"));
 	if (!correct_ber(argv[1]))
-		exit(ft_printf("the extension of this file is not '.ber'!"));
+		exit(ft_printf("Error\nthe extension of this file is not '.ber'!"));
 	if (!map_items(argv[1]))
-		exit(ft_printf("The map has a different argument!"));
+		exit(ft_printf("Error\nThe map has a different argument!"));
 	map_axis(argv[1]);
 }
 
@@ -66,7 +66,7 @@ int	map_items(char *name)
 
 	fd = open(name, O_RDONLY);
 	if (fd <= 0)
-		exit(ft_printf("An incorrect file was entered."));
+		exit(ft_printf("Error\nAn incorrect file was entered."));
 	str = get_next_line(fd);
 	while (str != NULL)
 	{
@@ -113,5 +113,5 @@ int	item_count(int fd, int p, int e, int c)
 	close(fd);
 	if (p == 1 && e == 1 && c >= 1)
 		return (1);
-	exit(ft_printf("the number of parameters is wrong!"));
+	exit(ft_printf("Error\nthe number of parameters is wrong!"));
 }

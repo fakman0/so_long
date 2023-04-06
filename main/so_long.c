@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:41:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/06 21:30:16 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 21:36:36 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	p_axs = p_axis(map, 0, 0);
 	controls(argc, argv);
 	if (!recursive(map, p_axs[0], p_axs[1]))
-		exit(ft_printf("map is impossible."));
+		exit(ft_printf("Error\nmap is impossible."));
 	free(p_axs);
 	get_variables(argv[1], data);
 	put_image(data, 0, 0);

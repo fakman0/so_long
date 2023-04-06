@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_xy.c                                            :+:      :+:    :+:   */
+/*   so_axis.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:18:36 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/06 20:51:39 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 21:37:06 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ size_t	map_y(int fd)
 	char	*str;
 
 	if (fd <= 0)
-		exit(ft_printf("An incorrect file was entered."));
+		exit(ft_printf("Error\nAn incorrect file was entered."));
 	y = 0;
 	str = get_next_line(fd);
 	while (str != NULL)
@@ -68,7 +68,7 @@ size_t	map_y(int fd)
 		str = get_next_line(fd);
 	}
 	if (y < 3)
-		exit(ft_printf("y-axis is less than 3"));
+		exit(ft_printf("Error\ny-axis is less than 3"));
 	return (y);
 }
 
@@ -78,18 +78,18 @@ size_t	map_x(int fd)
 	char	*str;
 
 	if (fd <= 0)
-		exit(ft_printf("An incorrect file was entered."));
+		exit(ft_printf("Error\nAn incorrect file was entered."));
 	str = get_next_line(fd);
 	x = ft_so_strlen(str);
 	while (str != NULL)
 	{
 		if (x != ft_so_strlen(str))
-			exit(ft_printf("the x-axis is not equal."));
+			exit(ft_printf("Error\nthe x-axis is not equal."));
 		free(str);
 		str = get_next_line(fd);
 	}
 	if (x < 3)
-		exit(ft_printf("x-axis is less than 3"));
+		exit(ft_printf("Error\nx-axis is less than 3"));
 	return (x);
 }
 
@@ -107,10 +107,10 @@ void	map_axis(char *name)
 	close(fd);
 	if (y == 3)
 		if (x < 5)
-			exit(ft_printf("the map is too small."));
+			exit(ft_printf("Error\nthe map is too small."));
 	if (x == 3)
 		if (y < 5)
-			exit(ft_printf("the map is too small."));
+			exit(ft_printf("Error\nthe map is too small."));
 	fd = open(name, O_RDONLY);
 	wall_control(fd, x, y);
 }

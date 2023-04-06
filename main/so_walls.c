@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:17:38 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/06 20:51:56 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 21:36:30 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	wall_control(int fd, int x, int y)
 		{
 			if (((rep_y == 1 && str[i] != '1') || (rep_y == y && str[i] != '1'))
 				&& str[i] != '\n')
-				exit(ft_printf("the map wall is missing."));
+				exit(ft_printf("Error\nthe map wall is missing."));
 			if ((rep_y != 1 && rep_y != y)
 				&& (str[0] != '1' || str[x - 1] != '1'))
-				exit(ft_printf("the map wall is missing."));
+				exit(ft_printf("Error\nthe map wall is missing."));
 			i++;
 		}
 		rep_y++;
