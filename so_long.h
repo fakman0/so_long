@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:18:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/06 17:37:14 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 20:39:19 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 //struct
 typedef struct s_data
 {
-	char	*name;
 	char	**map;
 	void	*m_p;
 	void	*w_p;
@@ -55,6 +54,5 @@ void	open_window(int fd);
 void	put_image(t_data *d, int i, int j);
 int		keycode(int keycode, t_data *data);
 int		move(t_data *d, int y, int x, char dir);
-
 
 #endif

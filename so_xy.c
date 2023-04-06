@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:18:36 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/01 16:41:53 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 20:39:25 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,3 @@ void	map_axis(char *name)
 	fd = open(name, O_RDONLY);
 	wall_control(fd, x, y);
 }
-

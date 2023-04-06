@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 21:08:53 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/06 17:29:41 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 20:32:44 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_variables(char *name, t_data *var)
 	close(fd);
 	fd = open(name, O_RDONLY);
 	y = map_y(fd);
-	var->name = name;
+	close(fd);
 	var->map = read_map(name);
 	var->m_p = mlx_init();
 	var->w_p = mlx_new_window(var->m_p, x * 50, y * 50, "God Of War 2D");
