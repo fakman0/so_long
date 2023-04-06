@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:18:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/02 14:17:44 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 17:37:14 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 //struct
 typedef struct s_data
 {
+	char	*name;
 	char	**map;
 	void	*m_p;
 	void	*w_p;
@@ -28,7 +29,7 @@ typedef struct s_data
 	int		*ex_p;
 	void	*p_p;
 	void	*b_p;
-	void	*wall_p;
+	void	*v_p;
 	void	*c_p;
 	void	*e_p;
 	int		step;
@@ -53,7 +54,7 @@ void	get_variables(char *name, t_data *var);
 void	open_window(int fd);
 void	put_image(t_data *d, int i, int j);
 int		keycode(int keycode, t_data *data);
-void	move(t_data *d,int y,int x);
+int		move(t_data *d, int y, int x, char dir);
 
 
 #endif

@@ -6,38 +6,70 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 13:26:44 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/02 14:20:45 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/06 17:51:42 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	keycode(int keycode, t_data *data)
+int	keycode(int keycode, t_data *d)
 {
-	if (keycode == 119 || keycode == 13)
-		move(data, data->px_p[0] - 1, data->px_p[1]);
-	else if (keycode == 100 || keycode == 2)
-		move(data, data->px_p[0], data->px_p[1] + 1);
-	else if (keycode == 115 || keycode == 1)
-		move(data, data->px_p[0] + 1, data->px_p[1]);
-	else if (keycode == 97 || keycode == 0)
-		move(data, data->px_p[0], data->px_p[1] - 1);
+	int	y;
+	int	x;
+
+	y = d->px_p[0];
+	x = d->px_p[1];
+	if ((keycode == 119 || keycode == 13) && d->map[y - 1][x] != '1')
+		move(d, --d->px_p[0], d->px_p[1] , 'W');
+	else if ((keycode == 100 || keycode == 2) && d->map[y][x + 1] != '1')
+		move(d, d->px_p[0], ++d->px_p[1], 'D');
+	else if ((keycode == 115 || keycode == 1) && d->map[y + 1][x] != '1')
+		move(d, ++d->px_p[0], d->px_p[1], 'S');
+	else if ((keycode == 97 || keycode == 0) && d->map[y][x - 1] != '1')
+		move(d, d->px_p[0], --d->px_p[1], 'A');
 	else if (keycode == 53 || keycode == 65307)
 		exit(ft_printf("You have exited the game."));
-	return (ft_printf("%d", data->step));
+	return (1);
 }
 
-void	move(t_data *d,int y,int x)
+void	up_map(t_data *d, char dir)
 {
-	int	old_x;
-	int	old_y;
+	int	y;
+	int	x;
 
-	
-	old_x = d->px_p[0] * 50;
-	old_y = d->px_p[1] * 50;
-	y = y * 50;
-	x = x * 50;
-	mlx_put_image_to_window(d->m_p, d->w_p, d->b_p, d->px_p[0], d->px_p[1]);
-	mlx_put_image_to_window(d->m_p, d->w_p, d->b_p, old_y, old_x);
+	y = d->px_p[0];
+	x = d->px_p[1];
+	if (dir == 'W')
+	{
+		d->map[y + 1][x] = '0';
+		d->map[y][x] = 'P';
+	}
+	else if (dir == 'D')
+	{
+		d->map[y][x - 1] = '0';
+		d->map[y][x] = 'P';
+	}
+	else if (dir == 'S')
+	{
+		d->map[y - 1][x] = '0';
+		d->map[y][x] = 'P';
+	}
+	else if (dir == 'A')
+	{
+		d->map[y][x + 1] = '0';
+		d->map[y][x] = 'P';
+	}
+}
+
+
+int	move(t_data *d, int y, int x, char dir)
+{
+	if (d->map[y][x] == 'C')
+		d->c_count++;
+	ft_printf("\n coin: %d", d->c_count);
+	up_map(d, dir);
+	put_image(d, 0, 0);
 	d->step++;
+	ft_printf("%d", d->step);
+	return (0);
 }
