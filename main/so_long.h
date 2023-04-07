@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 14:18:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/06 21:16:00 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/07 07:30:02 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ int		item_count(int fd, int p, int e, int c);
 //put_image
 void	put_image(t_data *d, int i, int j);
 //path_find
-int		recursive(char **map, int y, int x);
+int		recursive_c(char **map, int y, int x);
+int		recursive_e(char **map, int y, int x);
 int		param_count(char **map);
+int		exit_count(char **map);
 //init
 void	get_variables(char *name, t_data *var);
 #endif
