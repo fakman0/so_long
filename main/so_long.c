@@ -6,7 +6,7 @@
 /*   By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 13:41:46 by fakman            #+#    #+#             */
-/*   Updated: 2023/04/07 07:46:34 by fakman           ###   ########.fr       */
+/*   Updated: 2023/04/07 08:06:22 by fakman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@ int	close_game(void)
 {
 	exit(write(1, "The game have been closed.", 32));
 	return (1);
+}
+
+void	map_free(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
 int	main(int argc, char **argv)
@@ -30,7 +43,7 @@ int	main(int argc, char **argv)
 	controls(argc, argv);
 	if (!recursive_c(map, p_axs[0], p_axs[1]))
 		exit(ft_printf("Error\nmap is impossible."));
-	free(map);
+	map_free(map);
 	map = read_map(argv[1]);
 	if (!recursive_e(map, p_axs[0], p_axs[1]))
 		exit(ft_printf("Error\nmap is impossible."));
