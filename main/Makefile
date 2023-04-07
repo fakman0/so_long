@@ -6,7 +6,7 @@
 #    By: fakman <fakman@student.42kocaeli.com.tr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 21:05:27 by fakman            #+#    #+#              #
-#    Updated: 2023/04/06 21:16:57 by fakman           ###   ########.fr        #
+#    Updated: 2023/04/07 09:21:30 by fakman           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf so_long
+	@rm -rf *.a
 
 re: fclean $(NAME)
 
